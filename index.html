@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>Choonz - Mobile Strudel</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">Choonz</h1>
+      <div class="header-controls">
+        <button id="bpm-down" class="btn btn-small" aria-label="Decrease BPM">-</button>
+        <span id="bpm-display" class="bpm-display">120</span>
+        <button id="bpm-up" class="btn btn-small" aria-label="Increase BPM">+</button>
+      </div>
+    </header>
+
+    <!-- Main Editor Area -->
+    <main class="main-content">
+      <!-- Code Editor -->
+      <div class="editor-container">
+        <textarea
+          id="code-editor"
+          class="code-editor"
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          placeholder="// Type your Strudel pattern here...
+// Example: sound(&quot;bd sd hh sd&quot;)"
+        ></textarea>
+        <div id="error-display" class="error-display hidden"></div>
+      </div>
+
+      <!-- Visualization -->
+      <div id="visualizer" class="visualizer">
+        <canvas id="viz-canvas"></canvas>
+      </div>
+    </main>
+
+    <!-- Transport Controls -->
+    <div class="transport-bar">
+      <button id="play-btn" class="btn btn-transport btn-play" aria-label="Play">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+      <button id="stop-btn" class="btn btn-transport btn-stop" aria-label="Stop">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="6" width="12" height="12"/>
+        </svg>
+      </button>
+      <button id="shuffle-btn" class="btn btn-transport" aria-label="Random Pattern">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+        </svg>
+      </button>
+      <button id="clear-btn" class="btn btn-transport" aria-label="Clear">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Preset Patterns Drawer -->
+    <div id="presets-drawer" class="presets-drawer">
+      <button id="presets-toggle" class="presets-toggle" aria-label="Toggle Presets">
+        <span class="toggle-arrow">▲</span>
+        <span>Patterns</span>
+      </button>
+      <div class="presets-content">
+        <div class="presets-grid" id="presets-grid">
+          <!-- Presets injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Insert Bar -->
+    <div class="quick-insert">
+      <button class="insert-btn" data-insert='sound("")'>sound</button>
+      <button class="insert-btn" data-insert='note("")'>note</button>
+      <button class="insert-btn" data-insert=".fast(2)">.fast</button>
+      <button class="insert-btn" data-insert=".slow(2)">.slow</button>
+      <button class="insert-btn" data-insert=".rev()">.rev</button>
+      <button class="insert-btn" data-insert=".jux(rev)">.jux</button>
+      <button class="insert-btn" data-insert=".lpf(800)">.lpf</button>
+      <button class="insert-btn" data-insert=".delay(.5)">.delay</button>
+      <button class="insert-btn" data-insert=".room(.5)">.room</button>
+      <button class="insert-btn" data-insert=".gain(.8)">.gain</button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+      <div class="loading-spinner"></div>
+      <p>Loading Strudel...</p>
+    </div>
+  </div>
+
+  <!-- Strudel REPL -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
