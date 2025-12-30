@@ -1,6 +1,6 @@
 # Choonz - Mobile Strudel UI
 
-A mobile-friendly live coding music interface powered by [Strudel](https://strudel.cc/).
+A mobile-friendly live coding music interface powered by [Strudel](https://strudel.cc/), built with Next.js.
 
 ## Features
 
@@ -12,21 +12,59 @@ A mobile-friendly live coding music interface powered by [Strudel](https://strud
 - **Code persistence** - Your code is saved locally
 - **PWA support** - Install as a standalone app on mobile
 
+## Tech Stack
+
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Strudel** - Live coding music library
+- **Web Audio API** - Browser-based audio synthesis
+
 ## Getting Started
 
-### Run locally
+### Install dependencies
 
 ```bash
-# Using npm
-npm start
-
-# Or with any static server
-npx serve .
+npm install
 ```
 
-Then open `http://localhost:3000` on your mobile device.
+### Run development server
 
-### Usage
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) on your mobile device or browser.
+
+### Build for production
+
+```bash
+npm run build
+npm start
+```
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx      # Root layout with metadata
+│   ├── page.tsx        # Main page (client-side)
+│   └── globals.css     # Global styles
+├── components/
+│   ├── StrudelUI.tsx   # Main UI component
+│   ├── Header.tsx      # Logo and BPM controls
+│   ├── CodeEditor.tsx  # Code textarea
+│   ├── Visualizer.tsx  # Waveform canvas
+│   ├── TransportBar.tsx # Play/stop buttons
+│   ├── PresetsDrawer.tsx # Pattern presets
+│   └── QuickInsert.tsx # Quick function buttons
+├── hooks/
+│   └── useStrudel.ts   # Strudel REPL integration
+└── lib/
+    └── presets.ts      # Pattern preset definitions
+```
+
+## Usage
 
 1. **Tap a preset** to load a pattern, or write your own code
 2. **Tap the play button** to start the audio (required for mobile)

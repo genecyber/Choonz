@@ -2,18 +2,35 @@
   "name": "choonz-strudel-mobile",
   "version": "1.0.0",
   "description": "Mobile-friendly Strudel live coding music interface",
-  "main": "index.html",
+  "private": true,
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx serve . -l 3000"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [
     "strudel",
     "music",
     "live-coding",
     "mobile",
-    "tidal"
+    "tidal",
+    "nextjs"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@strudel/core": "^1.0.0",
+    "@strudel/mini": "^1.0.0",
+    "@strudel/webaudio": "^1.0.0",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  }
 }
